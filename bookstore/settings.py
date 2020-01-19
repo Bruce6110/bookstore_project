@@ -60,6 +60,7 @@ ROOT_URLCONF = 'bookstore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        
         'DIRS': [os.path.join(BASE_DIR, 'templates')],#new
         'APP_DIRS': True,
         'OPTIONS': {
@@ -119,3 +120,6 @@ try:
     print("Imported Local Settings")
 except ImportError:
     print("No Local Settings Found")
+
+LOGIN_REDIRECT_URL='home'
+LOGOUT_REDIRECT_URL='home'
