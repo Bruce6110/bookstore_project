@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
-
+{% load static%}
 {% block title %} Home {% endblock title%}
 
 {% block content %}
-<h1>Homepage</h1>
+<h1>Basilosaurus Homepage</h1>
+<img class='bookcover' src="{% static 'images/basilosaurus.jpg' %}" alt="Basilosaurus" />
+<br />Basilosaurus, despite the name, is a genus of early marine mammals living around 40 million years ago. They
+reached lengths of up to 60 feet.
 {% if user.is_authenticated %}
 Hi {{user.username}}
 <p><a href="{% url 'logout' %}"> Log Out</a> </p>

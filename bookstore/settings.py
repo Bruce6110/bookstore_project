@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third-party
+    'crispy_forms',
+
     # Local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
@@ -60,8 +64,8 @@ ROOT_URLCONF = 'bookstore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],#new
+
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # new
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,6 +77,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'bookstore.wsgi.application'
 
@@ -115,11 +121,29 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+# Note: STATICFILES_DIRS is for LOCAL development only
+# note also that this is a python list, meaning multiple dirs are accommodated
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+""" Note: STATIC_ROOT is for PRODUCTION only.  Defines location of static files in prod. At deployment time,
+the  collectstatic command will automatically compile files throughout the project into a single directory in production.  More efficient
+ """
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+# STATICFILES_FINDERS tells Django where to look for static file directories.  It is implicitly set for us, although Will prefers to make it explicit
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
+
+
 try:
     from .local_settings import *
     print("Imported Local Settings")
 except ImportError:
     print("No Local Settings Found")
 
-LOGIN_REDIRECT_URL='home'
-LOGOUT_REDIRECT_URL='home'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

@@ -6,8 +6,17 @@ from django.urls import reverse
 
 
 class CustomUserTests(TestCase):
+    ...
+
+
+class SignupPageTests(TestCase):
+
+    def setUp(self):
+        url = reverse('signup')
+        self.response = self.client.get(url)
+
     def test_create_user(self):
-        print("&&&&&&&&&&&&& STARTING TEST_CREATE_USER &&&&&&&&&&&&&")
+        print("\n\tTesting creation of user")
         User = get_user_model()
         user = User.objects.create_user(
             username='will',
@@ -20,9 +29,10 @@ class CustomUserTests(TestCase):
         self.assertTrue(user.is_active)
         self.assertFalse(user.is_staff)
         self.assertFalse(user.is_superuser)
-        print("&&&&&&&&&&&&& FINISHED &&&&&&&&&&&&&")
 
     def test_create_super_user(self):
+        print("\n\tTesting creation of superuser")
+        
         User = get_user_model()
         user = User.objects.create_superuser(
             username='superwill',
@@ -36,18 +46,9 @@ class CustomUserTests(TestCase):
         self.assertTrue(user.is_staff)
         self.assertTrue(user.is_superuser)
 
-
-class CustomUserTests(TestCase):
-    ...
-
-
-class SignupPageTests(TestCase):
-
-    def setUp(self):
-        url = reverse('signup')
-        self.response = self.client.get(url)
-
+  
     def test_signup_template(self):
+        print("\n\tTesting signup template")
         self.assertEqual(self.response.status_code, 200)
         self.assertTemplateUsed(self.response, 'signup.html')
         self.assertContains(self.response, 'Sign Up')
