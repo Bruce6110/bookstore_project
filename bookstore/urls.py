@@ -22,12 +22,14 @@ urlpatterns = [
 
     # User Mgmt
     # These urls include login, logout, password_change, etc
-    path('accounts/', include('django.contrib.auth.urls')),
+    # default: path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('allauth.urls')),  # new for allauth
+    # Allauth also obviates the need for the users/urls.py and users/views.py.  (We could delete)
 
     # Local Apps
     path('', include('pages.urls')),  # new
     path('accounts/', include('users.urls'))
 
 ]
-print("URL PATTERNS: ")
-print(urlpatterns)
+#print("URL PATTERNS: ")
+# print(urlpatterns)

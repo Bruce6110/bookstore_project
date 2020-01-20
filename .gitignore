@@ -24,6 +24,7 @@ db.sqlite3
 /media
 /static
 /zz_info
+/templates/registration_old
 
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/

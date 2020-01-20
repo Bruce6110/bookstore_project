@@ -29,7 +29,7 @@ class HomepageTests(SimpleTestCase):
 
     def test_homepage_contains_correct_html(self):
         print("\n\tTesting for correct html")
-        self.assertContains(self.response, 'Homepage')
+        self.assertContains(self.response, 'Bookstore')
 
     def test_homepage_does_not_contain_incorrect_html(self):
         print("\n\tTesting for no incorrect html")

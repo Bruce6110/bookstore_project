@@ -37,17 +37,29 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',  # allows a single Django project to control multiple sites
 
     # Third-party
     'crispy_forms',
+    'allauth',  # additional user registration functionality
+    'allauth.account',
 
     # Local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
 ]
 
-
+# django-allauth config
+SITE_ID = 1
 AUTH_USER_MODEL = 'users.CustomUser'  # new
+# overrides default.  The "Remember Me?" checkbox won't appear at login.
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # new
+ACCOUNT_USERNAME_REQUIRED = False  # new
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  # new
+ACCOUNT_EMAIL_REQUIRED=True #new
+ACCOUNT_UNIQUE_EMAIL = True  # new
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -58,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'bookstore.urls'
 
@@ -77,10 +90,33 @@ TEMPLATES = [
         },
     },
 ]
+'''Python tip:  Lists use [], Tuples use (), Dictionaries use {},
+             Sets use the set() builtin function,
+             Deques (double-ended queues) use deque() builtin function,
+
+             Lists behave like arrays
+             Tuples are faster and use less memory
+
+             A tuple can become a 'named tuple' if you define it as follows:
+                person = collections.namedtuple("firstName","surname","age")
+                persons = []
+                persons.append(person("Alain","Delon",32))
+                persons.append(person("Fred","Franklin",54))
+# 
+'''
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'bookstore.wsgi.application'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # django default
+    'allauth.account.auth_backends.AuthenticationBackend',  # new
+
+)
+
+# since we don't have an SMTP mail server configured, we will just output mail to the console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Password validation
@@ -146,4 +182,5 @@ except ImportError:
     print("No Local Settings Found")
 
 LOGIN_REDIRECT_URL = 'home'
+ACCOUNT_LOGOUT_REDIRECT = 'home'  # used by allauth
 LOGOUT_REDIRECT_URL = 'home'
