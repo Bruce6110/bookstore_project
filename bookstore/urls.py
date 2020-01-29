@@ -28,7 +28,8 @@ urlpatterns = [
 
     # Local Apps
     path('', include('pages.urls')),  # new
-    path('accounts/', include('users.urls'))
+    path('accounts/', include('users.urls')),  # new
+    path('books/', include('books.urls')),  # new
 
 ]
 #print("URL PATTERNS: ")

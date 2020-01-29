@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{book.title}}{% endblock title %}
+
+{% block content %}
+
+<!--object_list is part of ListView-->
+<div class='book-detail'>
+    <h3>{{book.title}} </h3>
+    <p>Author: {{book.author}}</p>
+    <p>Price: {{book.price}}</p>
+
+</div>
+
+{% endblock content%}

@@ -43,10 +43,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     'allauth',  # additional user registration functionality
     'allauth.account',
+    'reset_migrations',
 
     # Local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'books.apps.BooksConfig',
 ]
 
 # django-allauth config
@@ -57,10 +59,10 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # new
 ACCOUNT_USERNAME_REQUIRED = False  # new
 ACCOUNT_AUTHENTICATION_METHOD = 'email'  # new
-ACCOUNT_EMAIL_REQUIRED=True #new
+ACCOUNT_EMAIL_REQUIRED = True  # new
 ACCOUNT_UNIQUE_EMAIL = True  # new
 
-DEFAULT_FROM_EMAIL='admin@basilosaurus.com'
+DEFAULT_FROM_EMAIL = 'admin@basilosaurus.com'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
