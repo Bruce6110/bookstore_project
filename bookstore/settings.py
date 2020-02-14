@@ -108,6 +108,7 @@ TEMPLATES = [
 # 
 '''
 
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'bookstore.wsgi.application'
@@ -164,6 +165,10 @@ STATIC_URL = '/static/'
 # Note: STATICFILES_DIRS is for LOCAL development only
 # note also that this is a python list, meaning multiple dirs are accommodated
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+#Define MEDIA directories for user-uploaded content, aka 'media'
+MEDIA_URL = '/media/'  # new
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # new
 
 """ Note: STATIC_ROOT is for PRODUCTION only.  Defines location of static files in prod. At deployment time,
 the  collectstatic command will automatically compile files throughout the project into a single directory in production.  More efficient

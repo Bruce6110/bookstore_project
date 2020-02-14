@@ -7,6 +7,9 @@
 
 <!--object_list is part of ListView-->
 <div class='book-detail'>
+    {%if book.cover %}
+    <img class="bookcover" src="{{ book.cover.url }}" alt="{{book.title}}" />
+    {% endif %}
     <h3>{{book.title}} </h3>
     <p>Author: {{book.author}}</p>
     <p>Price: {{book.price}}</p>
