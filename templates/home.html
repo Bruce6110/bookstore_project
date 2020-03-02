@@ -7,8 +7,7 @@
 <img class='bookcover' src="{% static 'images/basilosaurus.jpg' %}" alt="Basilosaurus" />
 <br />
 <p style='font-size:1.2em; width:40em;'>Basilosaurus, despite the name, is not a dinosaur but a genus of early marine
-    mammals living
-    around 40 million years ago. They could reach lengths of 60 feet.</p>
+    mammals living around 40 million years ago. They could reach lengths of 60 feet.</p>
 {% if user.is_authenticated %}
 Hi {{user.username}}
 <p><a href="{% url 'account_logout' %}"> Log Out</a> </p>
