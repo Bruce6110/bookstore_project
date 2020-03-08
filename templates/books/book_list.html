@@ -4,6 +4,7 @@
 Books{% endblock title %}
 
 {% block content %}
+<a href ="{% url 'orders' %}" class="btn btn-success">Purchase All Books</a>
 {% for book in book_list %}
 <!--object_list is part of ListView-->
 <div>
